@@ -1,0 +1,14 @@
+{
+  "groups": [
+    { "title": "Software engineering", "items": ["Python", "C++", "JavaScript", "TypeScript"] },
+    { "title": "Frontend", "items": ["React", "Next.js", "HTML", "CSS", "JavaScript"] },
+    { "title": "Backend", "items": ["Node.js", "Express", "REST APIs", "Authentication", "Authorization", "WebSockets"] },
+    { "title": "Database", "items": ["MongoDB", "SQL"] },
+    { "title": "AI engineering", "items": ["LLMs", "RAG", "Agentic AI", "AI Agents", "Tool Calling", "Prompt Engineering", "AI application development"] },
+    { "title": "Agent frameworks", "items": ["Google ADK", "LangChain", "MCP"] },
+    { "title": "Full stack", "items": ["MERN (MongoDB, Express, React, Node.js)"] },
+    { "title": "Tools", "items": ["Git", "GitHub", "Docker", "Postman"] },
+    { "title": "Computer science", "items": ["Data Structures", "Algorithms", "OOP", "Problem Solving"] }
+  ],
+  "notes": "SQL/MySQL appears only as 2 solved LeetCode problems; it is not claimed as a stack skill. Only frameworks present in Mohit's repos are listed."
+}

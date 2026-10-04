@@ -1,0 +1,150 @@
+{
+  "projects": [
+    {
+      "id": "codenest",
+      "title": "CodeNest — Cloud IDE",
+      "kind": "Developer tool / full-stack",
+      "one_liner": "A browser-based code editor with Docker, terminal, and live preview. Live at project-idx-clone.vercel.app.",
+      "problem": "New developers lose hours configuring local toolchains before writing code.",
+      "approach": "Ship the environment with the code: per-session Docker containers, React workspace with terminal and live preview, session-scoped sync.",
+      "tech": ["JavaScript", "React", "Node.js", "Express", "Docker"],
+      "highlights": ["Environment setup under 2 minutes", "Live browser preview", "In-editor terminal", "In-browser CLI with 20+ commands", "Session-based code synchronization"],
+      "note": "Setup-time and feedback-cycle figures are self-reported testing notes.",
+      "links": { "github": "https://github.com/Mohit067/Project-IDX-Clone", "live": "https://project-idx-clone.vercel.app" }
+    },
+    {
+      "id": "teamchat",
+      "title": "Realtime Team Chat (Slack-like)",
+      "kind": "Real-time full-stack",
+      "one_liner": "A real-time chat app with login, private chats, payments, and file uploads.",
+      "problem": "Team chat must feel instant while handling auth, permissions, uploads, payments and background work.",
+      "approach": "Socket.IO event layer for messaging; REST for the rest; Bull queues for async work; S3 for media; RBAC at API and socket layers.",
+      "tech": ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Socket.IO", "JWT", "Bull", "Razorpay", "AWS S3"],
+      "highlights": ["Real-time channels and private chats", "JWT auth + role-based access", "Razorpay sandbox payments (50+ test transactions)", "S3 media storage", "Bull background jobs"],
+      "note": "Sub-200ms latency figure is a self-reported testing note.",
+      "links": { "frontend": "https://github.com/Mohit067/Slack_Frontend", "backend": "https://github.com/Mohit067/Slack_Backend" }
+    },
+    {
+      "id": "docflow",
+      "title": "Document Flow & Alerts",
+      "kind": "Full-stack workflow",
+      "one_liner": "A document upload app with login roles, deadline tracking, and email reminders.",
+      "problem": "Client document workflows miss deadlines when uploads, reviews and reminders live in disconnected tools.",
+      "approach": "Role-scoped uploads with deadline metadata, cron-driven NodeMailer reminder sweeps, and a dashboard surfacing what is due.",
+      "tech": ["React", "Node.js", "Express", "MongoDB", "NodeMailer", "Cron Jobs"],
+      "highlights": ["Role-based upload and review workflow", "Automated email alerts", "Deadline-tracking dashboard", "Indexed MongoDB queries for search"],
+      "note": "Deadline/search improvement figures are self-reported testing notes.",
+      "links": { "frontend": "https://github.com/Mohit067/Document_Uploader_Frontend", "backend": "https://github.com/Mohit067/Document_Uploader_Backend" }
+    },
+    {
+      "id": "posture",
+      "title": "Bad-Posture Detection",
+      "kind": "AI full-stack",
+      "one_liner": "A full-stack app that watches your sitting posture and shows it on a dashboard.",
+      "problem": "Desk workers develop strain with no feedback loop on sitting posture.",
+      "approach": "Stream pose signals to an inference endpoint; render live posture state, history and alerts.",
+      "tech": ["JavaScript", "React", "Node.js", "Express", "Machine Learning"],
+      "highlights": ["Live posture dashboard", "Dedicated inference backend", "Session history and alerts"],
+      "links": { "frontend": "https://github.com/Mohit067/Bad-Posture-Detection-Frontend", "backend": "https://github.com/Mohit067/Bad-Posture-Detection-Backend" }
+    },
+    {
+      "id": "videocall",
+      "title": "Video Calling App",
+      "kind": "Real-time full-stack",
+      "one_liner": "A video calling app with rooms, built fully in TypeScript.",
+      "problem": "Browser calls need reliable signaling and room state before media can flow.",
+      "approach": "Typed signaling backend for rooms and offer/answer exchange; TypeScript frontend for peer connections and call UI.",
+      "tech": ["TypeScript", "React", "Node.js", "Express", "WebRTC signaling"],
+      "highlights": ["Room-based video sessions", "Signaling backend", "End-to-end TypeScript"],
+      "links": { "frontend": "https://github.com/Mohit067/Video_Calling_App_Frontend", "backend": "https://github.com/Mohit067/Video_Calling_App_Backend" }
+    },
+    {
+      "id": "cliagent",
+      "title": "CLI Agent (Python)",
+      "kind": "Agentic AI experiment",
+      "one_liner": "An AI agent for the terminal. It takes plain-English requests and runs tasks with tools.",
+      "problem": "Repetitive terminal workflows need manual step-by-step operation.",
+      "approach": "LLM reasoning loop in a CLI with a tool registry for multi-step task execution.",
+      "tech": ["Python", "LLM APIs"],
+      "highlights": ["Natural-language terminal commands", "Multi-step task loop", "Extensible tool registry"],
+      "links": { "github": "https://github.com/Mohit067/CLI_Agent" }
+    },
+    {
+      "id": "tic-tac-toe-react",
+      "title": "Tic Tac Toe (React)",
+      "kind": "Browser game",
+      "one_liner": "Two-player Tic Tac Toe in React 19 + Vite with win/draw detection. Playable live.",
+      "problem": "Learning real React state via a classic game: turns, win state and reset must stay in sync.",
+      "approach": "Board as a single state array, derived winner/draw per move, UI as a pure function of state.",
+      "tech": ["JavaScript", "React", "Vite", "CSS"],
+      "highlights": ["Two-player local gameplay", "Win + draw detection", "Toast result notifications", "One-click reset"],
+      "links": { "github": "https://github.com/Mohit067/Tic_Tac_Toi_React", "live": "https://zingy-platypus-cefe59.netlify.app/" }
+    },
+    {
+      "id": "ping-pong",
+      "title": "Ping Pong Game",
+      "kind": "Browser game",
+      "one_liner": "Two-player browser Pong with keyboard paddles and live scoring. Playable live.",
+      "problem": "Game feel needs a tight loop: input, ball physics, collision and score updating smoothly.",
+      "approach": "JS game loop for ball/paddle positions, keyboard input, collision checks, scoreboard with rounds.",
+      "tech": ["JavaScript", "HTML", "CSS"],
+      "highlights": ["Two-player keyboard paddles", "Randomized ball physics", "Live scoreboard with rounds", "Start/reset flow"],
+      "links": { "github": "https://github.com/Mohit067/Ping_Pong_Game", "live": "https://fancy-ping-pong-0dd892.netlify.app/" }
+    },
+    {
+      "id": "snake",
+      "title": "Snake Game",
+      "kind": "Browser game",
+      "one_liner": "Classic Snake in vanilla JS — eat, grow, chase a high score. Playable live.",
+      "problem": "Snake needs precise grid movement, growth, collision and food-spawn logic to feel right.",
+      "approach": "Grid loop with snake body as a queue, food on free cells, wall/self collision every tick.",
+      "tech": ["JavaScript", "HTML", "CSS"],
+      "highlights": ["Keyboard grid movement", "Food spawn + growth", "Wall/self collision game-over", "Score tracking"],
+      "links": { "github": "https://github.com/Mohit067/Snake-Game", "live": "https://friends-game-69d1cd.netlify.app/" }
+    },
+    {
+      "id": "hangman",
+      "title": "Hangman Game (React)",
+      "kind": "Browser game",
+      "one_liner": "Word-guessing Hangman in React 18 + Zustand + Tailwind with lives and round states.",
+      "problem": "Round state (guesses, masked word, lives, win/lose) must never desync.",
+      "approach": "Zustand store for round lifecycle, masked word derived from guesses, pure win/lose checks.",
+      "tech": ["JavaScript", "React", "Vite", "Tailwind CSS", "Zustand"],
+      "highlights": ["Masked word display", "Lives tracking", "Win/game-over states", "Routed screens"],
+      "links": { "github": "https://github.com/Mohit067/Hangman_Game", "word_api": "https://github.com/Mohit067/Hangman-JSON-server", "play": "https://stackblitz.com/github/Mohit067/Hangman_Game" }
+    },
+    {
+      "id": "simon-say",
+      "title": "Simon Say Game",
+      "kind": "Browser game",
+      "one_liner": "Simon-style memory game in vanilla JS — repeat the growing color sequence.",
+      "problem": "Must flash, listen and validate in exact order without out-of-turn input.",
+      "approach": "Separate game vs. user sequences, one new color per level, click-by-click validation.",
+      "tech": ["JavaScript", "HTML", "CSS"],
+      "highlights": ["Four-color sequence", "Level progression", "Answer validation", "High-score tracking"],
+      "links": { "github": "https://github.com/Mohit067/Simon_Say", "play": "https://raw.githack.com/Mohit067/Simon_Say/main/index.html" }
+    },
+    {
+      "id": "tic-tac-toe-vanilla",
+      "title": "Tic Tac Toe (Vanilla JS)",
+      "kind": "Browser game / experiment",
+      "one_liner": "Dependency-free Tic Tac Toe in plain HTML/CSS/JS — zero build step.",
+      "problem": "Small games should load instantly with no toolchain.",
+      "approach": "Plain DOM grid with direct handlers and inline win-check.",
+      "tech": ["JavaScript", "HTML", "CSS"],
+      "highlights": ["Two-player gameplay", "Win + draw detection", "Zero dependencies"],
+      "links": { "github": "https://github.com/Mohit067/Tic_Tac_Toe", "play": "https://raw.githack.com/Mohit067/Tic_Tac_Toe/main/index.html" }
+    }
+  ],
+  "ai_lab": [
+    { "name": "MCP_Claude", "url": "https://github.com/Mohit067/MCP_Claude", "what": "Model Context Protocol + Claude agent experiment" },
+    { "name": "OCR_agent", "url": "https://github.com/Mohit067/OCR_agent", "what": "Document OCR agent pipeline" },
+    { "name": "Memory", "url": "https://github.com/Mohit067/Memory", "what": "Agent memory systems for long-horizon tasks" },
+    { "name": "LTM-google-adk", "url": "https://github.com/Mohit067/LTM-google-adk", "what": "Long-term memory built with Google's Agent Development Kit" },
+    { "name": "agent", "url": "https://github.com/Mohit067/agent", "what": "General agent scaffolding and trials" },
+    { "name": "langchain", "url": "https://github.com/Mohit067/langchain", "what": "LangChain notebooks and RAG trials" },
+    { "name": "ML-Toolkit", "url": "https://github.com/Mohit067/ML-Toolkit", "what": "ML utilities and learning notebooks" },
+    { "name": "ScreenTime-Analyzer", "url": "https://github.com/Mohit067/ScreenTime-Analyzer", "what": "Screen-time data analysis tool" }
+  ],
+  "more_on_github": "https://github.com/Mohit067?tab=repositories"
+}

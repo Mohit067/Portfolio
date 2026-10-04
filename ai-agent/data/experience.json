@@ -1,0 +1,26 @@
+{
+  "experience": [
+    {
+      "role": "Associate Software Engineer",
+      "company": "Maventic Innovation Pvt. Ltd.",
+      "location": "Bhopal, Madhya Pradesh, India",
+      "period": "Sep 2026 — Present",
+      "headline": "AI Trainee at Maventic | Agentic AI | LLM | RAG",
+      "summary": "AI-focused software engineering role spanning agentic AI, LLMs, and RAG systems.",
+      "technologies": ["Agentic AI", "LLM", "RAG", "Python", "Next.js", "Node.js"],
+      "verification": "Role, company, location and start month per public LinkedIn profile. Detailed responsibilities are not publicly listed, so they are intentionally kept concise."
+    },
+    {
+      "role": "B.Tech, Artificial Intelligence and Data Science",
+      "company": "Samrat Ashok Technological Institute, Vidisha",
+      "period": "Completed",
+      "summary": "Engineering degree with core CS foundations: data structures, algorithms, OOP in C++.",
+      "technologies": ["C++", "DSA", "OOP", "Python"],
+      "verification": "Per Mohit (current source of truth: degree completed)."
+    }
+  ],
+  "achievements": [
+    "L'Oréal Sustainability Challenge 2024 participant — Team Engineers, SATI (online aptitude assessment)",
+    "100 Days LeetCode consistency badge (2025), plus 50-day badges 2024 and 2025"
+  ]
+}

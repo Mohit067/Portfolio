@@ -1,0 +1,48 @@
+{
+  "name": "Mohit Sahu",
+  "title": "Associate Software Engineer",
+  "company": "Maventic Innovation Pvt. Ltd.",
+  "company_location": "Bhopal, Madhya Pradesh, India",
+  "focus": "web apps, backend systems, and AI Agents",
+  "tagline": "I build web apps, backend systems, and AI Agents.",
+  "location": "Bhopal, Madhya Pradesh, India",
+  "hometown": "Vidisha, Madhya Pradesh, India",
+  "email": "mohitsahu60067@gmail.com",
+  "availability": "Open to opportunities",
+  "links": {
+    "github": "https://github.com/Mohit067",
+    "linkedin": "https://www.linkedin.com/in/mohit-sahu-262361257/",
+    "leetcode": "https://leetcode.com/u/mohit067/"
+  },
+  "education": {
+    "degree": "B.Tech, Artificial Intelligence and Data Science",
+    "institute": "Samrat Ashok Technological Institute, Vidisha",
+    "status": "Completed",
+    "class_xii": "Govt. Boy's Higher Secondary School Khargapur (MP Board) — 92%"
+  },
+  "github": {
+    "username": "Mohit067",
+    "profile_url": "https://github.com/Mohit067",
+    "public_repos": 71,
+    "followers": 10,
+    "location": "Vidisha, Madhya Pradesh"
+  },
+  "leetcode": {
+    "username": "mohit067",
+    "profile_url": "https://leetcode.com/u/mohit067/",
+    "total_solved": 435,
+    "by_language": { "C++": 432, "MySQL": 2, "Bash": 1 },
+    "primary_language": "C++",
+    "rank": 278143,
+    "badges": ["50 Days Badge 2024", "50 Days Badge 2025", "100 Days Badge 2025"],
+    "strong_tags": [
+      { "tag": "Array", "count": 248 },
+      { "tag": "Math", "count": 93 },
+      { "tag": "Hash Table", "count": 90 },
+      { "tag": "String", "count": 71 },
+      { "tag": "Sorting", "count": 62 },
+      { "tag": "Dynamic Programming", "count": 56 },
+      { "tag": "Binary Search", "count": 48 }
+    ]
+  }
+}

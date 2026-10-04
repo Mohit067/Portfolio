@@ -1,0 +1,8 @@
+node_modules
+.next
+.git
+.agents
+ai-agent
+.env.local
+.env*.local
+*.log
