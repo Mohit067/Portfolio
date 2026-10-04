@@ -23,17 +23,22 @@ from pydantic import BaseModel, Field
 
 from agent import answer_async, has_llm_key, stream_async  # noqa: E402
 
-PORT = int(os.environ.get("AGENT_PORT", "8001"))
+PORT = int(os.environ.get("PORT") or os.environ.get("AGENT_PORT") or "8001")
 STARTED = time.time()
 
 app = FastAPI(title="Mohit AI Agent", version="1.0.0")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000",
-                   "http://localhost:3006", "http://127.0.0.1:3006"],
-    allow_methods=["GET", "POST"],
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.api_route("/", methods=["GET", "HEAD"])
+def root() -> dict:
+    return {"status": "ok", "service": "mohit-ai-agent", "uptime_s": round(time.time() - STARTED, 1)}
 
 
 class ChatIn(BaseModel):
