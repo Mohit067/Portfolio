@@ -26,6 +26,13 @@ export const metadata: Metadata = {
     title: "Mohit Sahu — Software Engineer | AI & Full-Stack Developer",
     description: "Web apps, backend systems, and AI tools.",
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   metadataBase: new URL(SITE),
 };
 
