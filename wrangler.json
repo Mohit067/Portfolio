@@ -5,9 +5,11 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
-  "pages_build_output_dir": ".next",
+  "pages_build_output_dir": "out",
+  "assets": {
+    "directory": "out"
+  },
   "vars": {
-    "AGENT_URL": "https://portfolio-ah18.onrender.com",
     "NEXT_PUBLIC_AGENT_URL": "https://portfolio-ah18.onrender.com"
   }
 }

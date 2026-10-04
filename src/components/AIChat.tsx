@@ -21,6 +21,10 @@ const PLACEHOLDER: Record<Mode, string> = {
 const OFFLINE_MSG =
   "Mohit AI is offline right now — the agent backend isn't reachable. Try again in a bit, or reach Mohit directly at mohitsahu60067@gmail.com.";
 
+const AGENT_URL = (
+  process.env.NEXT_PUBLIC_AGENT_URL || "https://portfolio-ah18.onrender.com"
+).replace(/\/$/, "");
+
 export default function AIChat() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -38,11 +42,11 @@ export default function AIChat() {
   useEffect(() => {
     if (!open) return;
     let cancelled = false;
-    fetch("/api/chat", { cache: "no-store" })
+    fetch(`${AGENT_URL}/health`, { cache: "no-store" })
       .then((r) => r.json())
       .then((d) => {
         if (!cancelled) {
-          setOnline(!!d.online);
+          setOnline(d.status === "ok");
           setEngine(d.engine ?? "unknown");
           setLlmReady(d.engine === "adk-gemini");
         }
@@ -78,7 +82,7 @@ export default function AIChat() {
 
   const sendPlain = async (text: string, useMode: Mode): Promise<boolean> => {
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch(`${AGENT_URL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text, mode: useMode }),
@@ -98,7 +102,7 @@ export default function AIChat() {
     streamAbort.current = ctrl;
     let res: Response;
     try {
-      res = await fetch("/api/chat/stream", {
+      res = await fetch(`${AGENT_URL}/chat/stream`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text, mode: useMode }),
