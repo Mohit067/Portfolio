@@ -38,6 +38,17 @@ and streams SSE events (`meta` / `tok` / `done`); `engine` is `"adk-gemini"`, `"
 `"retrieval"`, or `"needs-key"`. Without `GOOGLE_API_KEY`, Mohit mode answers from verified
 data and General mode explains how to enable it. No API keys ever reach the browser.
 
+## Performance & Lighthouse Scores
+
+Audit results from Google PageSpeed Insights & Lighthouse — achieving a perfect score of **100 / 100 / 100 / 100** across Performance, Accessibility, Best Practices, and SEO:
+
+| Desktop Audit (100 / 100 / 100 / 100) | Mobile Audit (100 / 100 / 100 / 100) |
+| :---: | :---: |
+| ![Desktop Performance](./desktop_performance.png) | ![Mobile Performance](./mobile_performance.png) |
+
+- **Desktop**: FCP `0.3s` • LCP `0.3s` • TBT `0ms` • CLS `0` • Speed Index `0.4s`
+- **Mobile**: FCP `0.9s` • LCP `1.8s` • TBT `10ms` • CLS `0` • Speed Index `0.9s`
+
 ## Run it
 
 **1. Agent backend**
