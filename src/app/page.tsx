@@ -8,6 +8,7 @@ import Skills from "@/components/Skills";
 import Lab from "@/components/Lab";
 import Contact from "@/components/Contact";
 import AIChat from "@/components/AIChat";
+import RevealObserver from "@/components/RevealObserver";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
         <Contact />
       </main>
       <AIChat />
+      <RevealObserver />
     </>
   );
 }

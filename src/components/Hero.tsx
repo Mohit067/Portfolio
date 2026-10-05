@@ -1,23 +1,30 @@
-"use client";
-import { useEffect, useRef } from "react";
-import Image from "next/image";
-import gsap from "gsap";
+import type { StaticImageData } from "next/image";
 import { profile } from "@/data/profile";
+import dark1x from "@/assets/mohit-dark-144.webp";
+import dark2x from "@/assets/mohit-dark.webp";
+import light1x from "@/assets/mohit-light-144.webp";
+import light2x from "@/assets/mohit-light.webp";
+
+// Static export has no image optimizer, so pick between pre-sized 144px / 288px files ourselves.
+function Portrait({ x1, x2, className, priority }: { x1: StaticImageData; x2: StaticImageData; className: string; priority?: boolean }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={x1.src}
+      srcSet={`${x1.src} 144w, ${x2.src} 288w`}
+      sizes="(max-width: 768px) 96px, 144px"
+      alt="Mohit Sahu"
+      width={144}
+      height={144}
+      fetchPriority={priority ? "high" : undefined}
+      className={`size-full object-cover rounded-full border rule ${className}`}
+    />
+  );
+}
 
 export default function Hero() {
-  const root = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || !root.current) return;
-    const ctx = gsap.context(() => {
-      gsap.fromTo(".hero-in", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.08, ease: "power2.out", delay: 0.1 });
-    }, root);
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section id="top" ref={root} className="mx-auto max-w-6xl px-5 md:px-8 pt-28 md:pt-36 pb-12" aria-label="Intro">
+    <section id="top" className="mx-auto max-w-6xl px-5 md:px-8 pt-28 md:pt-36 pb-12" aria-label="Intro">
       <div className="flex items-center gap-5 md:gap-8">
         <div className="flex-1 min-w-0">
           <h1 className="hero-in display font-bold text-4xl md:text-6xl tracking-tight">Mohit Sahu</h1>
@@ -25,24 +32,9 @@ export default function Hero() {
             Associate Software Engineer
           </p>
         </div>
-        <div className="hero-in relative w-24 md:w-36 aspect-square shrink-0" aria-label="Photo of Mohit Sahu">
-          <Image
-            src="/mohit_black.png"
-            alt="Mohit Sahu"
-            fill
-            loading="eager"
-            fetchPriority="high"
-            sizes="(max-width: 768px) 96px, 144px"
-            className="hidden dark:block object-cover rounded-full border rule"
-          />
-          <Image
-            src="/mohit_light.png"
-            alt="Mohit Sahu"
-            fill
-            loading="eager"
-            sizes="(max-width: 768px) 96px, 144px"
-            className="block dark:hidden object-cover rounded-full border rule"
-          />
+        <div className="hero-in relative w-24 md:w-36 aspect-square shrink-0">
+          <Portrait x1={dark1x} x2={dark2x} priority className="hidden dark:block" />
+          <Portrait x1={light1x} x2={light2x} className="block dark:hidden" />
         </div>
       </div>
 
@@ -59,9 +51,9 @@ export default function Hero() {
       </div>
 
       <div className="hero-in mt-7 flex flex-wrap gap-x-6 gap-y-2 mono text-xs text-[var(--faint)]">
-        <a href={profile.links.github} target="_blank" rel="noreferrer" className="u-link hover:text-[var(--ink)]">GitHub <span className="arr">↗</span></a>
-        <a href={profile.links.linkedin} target="_blank" rel="noreferrer" className="u-link hover:text-[var(--ink)]">LinkedIn <span className="arr">↗</span></a>
-        <a href={profile.links.leetcode} target="_blank" rel="noreferrer" className="u-link hover:text-[var(--ink)]">LeetCode <span className="arr">↗</span></a>
+        <a href={profile.links.github} target="_blank" rel="noreferrer" className="u-link hover:text-[var(--ink)]">GitHub <span className="arr" aria-hidden>↗</span></a>
+        <a href={profile.links.linkedin} target="_blank" rel="noreferrer" className="u-link hover:text-[var(--ink)]">LinkedIn <span className="arr" aria-hidden>↗</span></a>
+        <a href={profile.links.leetcode} target="_blank" rel="noreferrer" className="u-link hover:text-[var(--ink)]">LeetCode <span className="arr" aria-hidden>↗</span></a>
       </div>
       <p className="hero-in mt-6 mono text-[11px] text-[var(--faint)]">
         psst — the <span className="text-[var(--mute)]">MOHIT AI</span> button actually works. Go ask it something.

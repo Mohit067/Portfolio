@@ -1,12 +1,10 @@
-"use client";
 import { labRepos } from "@/data/projects";
 import { profile } from "@/data/profile";
-import { SectionHeading, useReveal } from "./ui";
+import { SectionHeading } from "./ui";
 
 export default function Lab() {
-  const ref = useReveal();
   return (
-    <section id="lab" ref={ref} className="mx-auto max-w-6xl px-5 md:px-8 py-14 md:py-20 border-t rule" aria-label="Lab">
+    <section id="lab" className="mx-auto max-w-6xl px-5 md:px-8 py-14 md:py-20 border-t rule" aria-label="Lab">
       <SectionHeading index="06" label="Lab" title="Lab" sub="Small experiments and things I tried to learn something new." />
       <ul className="border-t rule">
         {labRepos.map((r) => (
@@ -21,7 +19,7 @@ export default function Lab() {
         ))}
       </ul>
       <a data-reveal href={`${profile.links.github}?tab=repositories`} target="_blank" rel="noreferrer" className="u-link mono text-[12px] mt-6 inline-block">
-        MORE ON GITHUB <span className="arr">↗</span>
+        MORE ON GITHUB <span className="arr" aria-hidden>↗</span>
       </a>
     </section>
   );

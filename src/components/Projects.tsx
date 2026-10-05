@@ -1,7 +1,10 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { projects, type Project } from "@/data/projects";
-import { SectionHeading, useReveal } from "./ui";
+import { SectionHeading } from "./ui";
+
+/** Visually hidden suffix so repeated labels ("Frontend", "Live Demo") stay unique for screen readers. */
+const For = ({ p }: { p: Project }) => <span className="sr-only"> — {p.title}</span>;
 
 function CaseStudy({ p, onClose }: { p: Project; onClose: () => void }) {
   useEffect(() => {
@@ -37,9 +40,9 @@ function CaseStudy({ p, onClose }: { p: Project; onClose: () => void }) {
     ["Result", <div key="r" className="flex flex-wrap gap-6">{p.metrics.map((m) => <div key={m.label}><p className="display font-bold text-2xl">{m.value}</p><p className="mono text-[11px] text-[var(--faint)]">{m.label}</p></div>)}</div>],
     ["Links", (
       <div key="l" className="flex flex-wrap gap-x-6 gap-y-2 mono text-[13px]">
-        {p.github.map((g) => <a key={g.url} href={g.url} target="_blank" rel="noreferrer" className="u-link text-[var(--ink)]">GitHub · {g.label} <span className="arr">↗</span></a>)}
-        {p.live && <a href={p.live.url} target="_blank" rel="noreferrer" className="u-link text-[var(--accent)]">{p.live.label} <span className="arr">↗</span></a>}
-        {p.demo && <a href={p.demo.url} target="_blank" rel="noreferrer" className="u-link text-[var(--mute)]">{p.demo.label} <span className="arr">↗</span></a>}
+        {p.github.map((g) => <a key={g.url} href={g.url} target="_blank" rel="noreferrer" className="u-link text-[var(--ink)]">GitHub · {g.label}<For p={p} /> <span className="arr" aria-hidden>↗</span></a>)}
+        {p.live && <a href={p.live.url} target="_blank" rel="noreferrer" className="u-link text-[var(--accent)]">{p.live.label}<For p={p} /> <span className="arr" aria-hidden>↗</span></a>}
+        {p.demo && <a href={p.demo.url} target="_blank" rel="noreferrer" className="u-link text-[var(--mute)]">{p.demo.label}<For p={p} /> <span className="arr" aria-hidden>↗</span></a>}
       </div>
     )],
   ];
@@ -54,7 +57,7 @@ function CaseStudy({ p, onClose }: { p: Project; onClose: () => void }) {
             <h3 className="display font-bold text-2xl md:text-4xl mt-2">{p.title}</h3>
             <p className="text-[var(--mute)] mt-2">{p.short}</p>
           </div>
-          <button onClick={onClose} aria-label="Close case study" className="w-10 h-10 shrink-0 grid place-items-center text-xl text-[var(--mute)] hover:text-[var(--ink)] border rule rounded-full">×</button>
+          <button onClick={onClose} autoFocus aria-label="Close case study" className="w-10 h-10 shrink-0 grid place-items-center text-xl text-[var(--mute)] hover:text-[var(--ink)] border rule rounded-full">×</button>
         </div>
         <p className="mono text-[11px] text-[var(--faint)] mt-3 mb-6">Verified: {p.verified}</p>
         <div className="flex flex-col gap-7 text-[15px] text-[var(--body)] leading-relaxed">
@@ -71,24 +74,28 @@ function CaseStudy({ p, onClose }: { p: Project; onClose: () => void }) {
 }
 
 export default function Projects() {
-  const ref = useReveal();
   const [active, setActive] = useState<Project | null>(null);
-  const open = useCallback((p: Project) => setActive(p), []);
+  const trigger = useRef<HTMLElement | null>(null);
+  const open = useCallback((p: Project) => {
+    trigger.current = document.activeElement as HTMLElement | null;
+    setActive(p);
+  }, []);
+  const close = useCallback(() => {
+    setActive(null);
+    trigger.current?.focus(); // hand focus back to the "Case study" button
+  }, []);
 
   return (
-    <section id="work" ref={ref} className="mx-auto max-w-6xl px-5 md:px-8 py-14 md:py-20 border-t rule" aria-label="Projects">
+    <section id="work" className="mx-auto max-w-6xl px-5 md:px-8 py-14 md:py-20 border-t rule" aria-label="Projects">
       <SectionHeading index="03" label="My work" title="My Work" sub="Things I have built — including playable browser games. Click any project for the case study, GitHub, and live demo link." />
 
       <div className="border-t rule">
         {projects.map((p) => (
+          // Whole row is a mouse shortcut; the "Case study" button is the accessible control.
           <article
             key={p.id}
             data-reveal
             onClick={() => open(p)}
-            onKeyDown={(e) => e.key === "Enter" && open(p)}
-            tabIndex={0}
-            role="button"
-            aria-label={`Open ${p.title} case study`}
             className="group grid md:grid-cols-12 gap-1 md:gap-6 py-7 border-b rule cursor-pointer"
           >
             <p className="mono text-[13px] text-[var(--faint)] md:col-span-1 md:pt-1">{p.index}</p>
@@ -101,19 +108,26 @@ export default function Projects() {
               <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 mono text-[13px]">
                 {p.github.map((g) => (
                   <a key={g.url} href={g.url} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="u-link text-[var(--ink)]">
-                    {g.label === "Repository" ? "GitHub" : g.label} <span className="arr">↗</span>
+                    {g.label === "Repository" ? "GitHub" : g.label}<For p={p} /> <span className="arr" aria-hidden>↗</span>
                   </a>
                 ))}
-                {p.live && <a href={p.live.url} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="u-link text-[var(--accent)]">{p.live.label} <span className="arr">↗</span></a>}
-                {p.demo && <a href={p.demo.url} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="u-link text-[var(--mute)]">{p.demo.label} <span className="arr">↗</span></a>}
-                <span className="text-[var(--faint)]">Case study <span className="inline-block transition-transform group-hover:translate-x-1" aria-hidden>→</span></span>
+                {p.live && <a href={p.live.url} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="u-link text-[var(--accent)]">{p.live.label}<For p={p} /> <span className="arr" aria-hidden>↗</span></a>}
+                {p.demo && <a href={p.demo.url} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="u-link text-[var(--mute)]">{p.demo.label}<For p={p} /> <span className="arr" aria-hidden>↗</span></a>}
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); open(p); }}
+                  aria-haspopup="dialog"
+                  className="text-[var(--faint)] hover:text-[var(--ink)] transition-colors"
+                >
+                  Case study<For p={p} /> <span className="inline-block transition-transform group-hover:translate-x-1" aria-hidden>→</span>
+                </button>
               </div>
             </div>
           </article>
         ))}
       </div>
 
-      {active && <CaseStudy p={active} onClose={() => setActive(null)} />}
+      {active && <CaseStudy p={active} onClose={close} />}
     </section>
   );
 }

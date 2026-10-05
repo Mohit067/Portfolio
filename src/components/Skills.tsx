@@ -1,12 +1,10 @@
-"use client";
 import { skills } from "@/data/experience";
 import { profile } from "@/data/profile";
-import { SectionHeading, useReveal } from "./ui";
+import { SectionHeading } from "./ui";
 
 export default function Skills() {
-  const ref = useReveal();
   return (
-    <section id="stack" ref={ref} className="mx-auto max-w-6xl px-5 md:px-8 py-14 md:py-20 border-t rule" aria-label="Tech stack">
+    <section id="stack" className="mx-auto max-w-6xl px-5 md:px-8 py-14 md:py-20 border-t rule" aria-label="Tech stack">
       <SectionHeading index="05" label="Skills" title="Skills" sub="What I use." />
       <dl className="border-t rule">
         {skills.map((g) => (

@@ -58,9 +58,9 @@ export default function Navbar() {
           ))}
         </ul>
         <div className="hidden lg:flex items-center gap-5 mono text-[11px]">
-          <a href={profile.links.github} target="_blank" rel="noreferrer" className="u-link text-[var(--faint)] hover:text-[var(--ink)]">GitHub <span className="arr">↗</span></a>
-          <a href={profile.links.linkedin} target="_blank" rel="noreferrer" className="u-link text-[var(--faint)] hover:text-[var(--ink)]">LinkedIn <span className="arr">↗</span></a>
-          <a href={profile.links.leetcode} target="_blank" rel="noreferrer" className="u-link text-[var(--faint)] hover:text-[var(--ink)]">LeetCode <span className="arr">↗</span></a>
+          <a href={profile.links.github} target="_blank" rel="noreferrer" className="u-link text-[var(--faint)] hover:text-[var(--ink)]">GitHub <span className="arr" aria-hidden>↗</span></a>
+          <a href={profile.links.linkedin} target="_blank" rel="noreferrer" className="u-link text-[var(--faint)] hover:text-[var(--ink)]">LinkedIn <span className="arr" aria-hidden>↗</span></a>
+          <a href={profile.links.leetcode} target="_blank" rel="noreferrer" className="u-link text-[var(--faint)] hover:text-[var(--ink)]">LeetCode <span className="arr" aria-hidden>↗</span></a>
           <ThemeToggle />
         </div>
         <div className="lg:hidden flex items-center gap-1">

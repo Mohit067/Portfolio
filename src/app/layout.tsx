@@ -1,12 +1,19 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { THEME_SCRIPT } from "@/lib/theme";
+import { SITE } from "@/lib/site";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 const grotesk = Space_Grotesk({ variable: "--font-display", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
-const SITE = "https://mohitsahu-portfolio.vercel.app";
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#050505" },
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+  ],
+};
 
 export const metadata: Metadata = {
   title: "Mohit Sahu — Software Engineer | AI & Full-Stack Developer",
@@ -34,12 +41,15 @@ export const metadata: Metadata = {
     apple: "/icon.svg",
   },
   metadataBase: new URL(SITE),
+  alternates: { canonical: "/" },
 };
 
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Mohit Sahu",
+  url: SITE,
+  image: `${SITE}/mohit.png`,
   jobTitle: "Associate Software Engineer",
   worksFor: { "@type": "Organization", name: "Maventic Innovation Pvt. Ltd." },
   email: "mailto:mohitsahu60067@gmail.com",
@@ -51,8 +61,6 @@ const personJsonLd = {
     "https://leetcode.com/u/mohit067/",
   ],
 };
-
-import { THEME_SCRIPT } from "@/lib/theme";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

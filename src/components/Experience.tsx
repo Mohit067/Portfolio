@@ -1,11 +1,9 @@
-"use client";
 import { experience } from "@/data/experience";
-import { SectionHeading, useReveal } from "./ui";
+import { SectionHeading } from "./ui";
 
 export default function Experience() {
-  const ref = useReveal();
   return (
-    <section id="experience" ref={ref} className="mx-auto max-w-6xl px-5 md:px-8 py-14 md:py-20 border-t rule" aria-label="Experience">
+    <section id="experience" className="mx-auto max-w-6xl px-5 md:px-8 py-14 md:py-20 border-t rule" aria-label="Experience">
       <SectionHeading index="02" label="Experience" title="Experience" />
       <p data-reveal className="-mt-6 mb-2 text-[15px] text-[var(--mute)]">Where I have worked.</p>
       <div className="flex flex-col">
@@ -17,7 +15,7 @@ export default function Experience() {
           >
             <p className="mono text-[11px] tracking-[0.14em] text-[var(--faint)] md:col-span-3 md:pt-1">
               {e.period}
-              {e.current && <span className="ml-2 inline-flex items-center gap-1.5 text-emerald-300"><span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden />NOW</span>}
+              {e.current && <span className="ml-2 inline-flex items-center gap-1.5 text-emerald-700 dark:text-emerald-300"><span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden />NOW</span>}
             </p>
             <div className="md:col-span-6">
               <h3 className="display font-bold text-xl md:text-2xl">{e.role}</h3>

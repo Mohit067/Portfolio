@@ -13,8 +13,8 @@
   --panel: #ffffff;
   --ink: #131316;
   --body: #3f3f46;
-  --mute: #63636b;
-  --faint: #8e8e96;
+  --mute: #52525b;
+  --faint: #686870;
   --line: rgba(0, 0, 0, 0.12);
   --wash: rgba(0, 0, 0, 0.035);
   --accent: #2f54eb;
@@ -26,7 +26,7 @@
   --ink: #f5f5f5;
   --body: #d4d4d8;
   --mute: #a1a1aa;
-  --faint: #71717a;
+  --faint: #85858e;
   --line: rgba(255, 255, 255, 0.09);
   --wash: rgba(255, 255, 255, 0.03);
   --accent: #5b8cff;
@@ -168,6 +168,39 @@ body {
 }
 .photo-frame:hover img {
   transform: translate(-2px, -3px) scale(1.005);
+}
+
+/* hero entrance — transform only, so the LCP paint is never delayed */
+@keyframes rise {
+  from {
+    transform: translateY(18px);
+  }
+}
+.hero-in {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero-in:nth-child(2) { animation-delay: 0.06s; }
+.hero-in:nth-child(3) { animation-delay: 0.12s; }
+.hero-in:nth-child(4) { animation-delay: 0.18s; }
+.hero-in:nth-child(5) { animation-delay: 0.24s; }
+.hero-in:nth-child(6) { animation-delay: 0.3s; }
+
+/* scroll reveal — RevealObserver only marks elements that start below the fold,
+   so content is fully visible without JS and above-the-fold paint is untouched */
+[data-reveal] {
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-reveal].reveal-pending {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: none; /* hide instantly; only the reveal animates */
+}
+
+/* skip layout/paint of offscreen sections until they approach the viewport */
+main > section:not(#top),
+main > footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
 }
 
 a:focus-visible,

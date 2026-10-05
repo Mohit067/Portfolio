@@ -1,10 +1,4 @@
-"use client";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SectionHeading, useReveal } from "./ui";
-
-gsap.registerPlugin(ScrollTrigger);
+import { SectionHeading } from "./ui";
 
 const flow = ["User", "AI agent", "Thinking", "Tools", "Data", "Answer"];
 const notes: Record<string, string> = {
@@ -19,25 +13,8 @@ const notes: Record<string, string> = {
 const chips = ["Python", "LLMs", "RAG", "AI Agents", "Google ADK"];
 
 export default function AIEngineering() {
-  const ref = useReveal();
-  const diagram = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || !diagram.current) return;
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray(".ai-node").forEach((el) => {
-        gsap.fromTo(el as Element, { opacity: 0.3 }, {
-          opacity: 1, duration: 0.45, ease: "power2.out",
-          scrollTrigger: { trigger: el as Element, start: "top 88%" },
-        });
-      });
-    }, diagram);
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={ref} className="mx-auto max-w-6xl px-5 md:px-8 py-12 md:py-16 border-t rule" aria-label="AI">
+    <section className="mx-auto max-w-6xl px-5 md:px-8 py-12 md:py-16 border-t rule" aria-label="AI">
       <SectionHeading index="04" label="AI" title="AI" sub="I also build AI apps using Python, LLMs, RAG, and AI agents." />
       <div data-reveal className="flex flex-wrap gap-2 mb-10">
         {chips.map((c) => (
@@ -45,11 +22,11 @@ export default function AIEngineering() {
         ))}
       </div>
       <div className="grid lg:grid-cols-12 gap-10">
-        <div ref={diagram} className="lg:col-span-6" aria-label="How the Mohit AI assistant works">
-          <p data-reveal className="mono text-[11px] tracking-[0.18em] text-[var(--faint)] mb-2">HOW THE CHAT BELOW WORKS</p>
-          <ol className="flex flex-col">
+        <div className="lg:col-span-6">
+          <p id="ai-flow" data-reveal className="mono text-[11px] tracking-[0.18em] text-[var(--faint)] mb-2">HOW THE CHAT BELOW WORKS</p>
+          <ol className="flex flex-col" aria-labelledby="ai-flow">
             {flow.map((n, i) => (
-              <li key={n} className="ai-node">
+              <li key={n} data-reveal>
                 <div className="flex items-baseline gap-4 py-2.5 border-t rule">
                   <span className="mono text-[11px] text-[var(--accent)]">0{i + 1}</span>
                   <div>

@@ -1,12 +1,10 @@
-"use client";
 import { profile } from "@/data/profile";
-import { SectionHeading, useReveal } from "./ui";
+import { SectionHeading } from "./ui";
 
 export default function Contact() {
-  const ref = useReveal();
   return (
     <>
-      <section id="contact" ref={ref} className="mx-auto max-w-6xl px-5 md:px-8 py-14 md:py-24 border-t rule" aria-label="Contact">
+      <section id="contact" className="mx-auto max-w-6xl px-5 md:px-8 py-14 md:py-24 border-t rule" aria-label="Contact">
         <SectionHeading index="07" label="Contact" title="Let's Talk" />
         <p data-reveal className="-mt-6 mb-8 text-[15px] text-[var(--mute)]">Have an idea or want to work together? Send me a message.</p>
         <div className="grid lg:grid-cols-12 gap-8">

@@ -1,10 +1,8 @@
-"use client";
-import { SectionHeading, useReveal } from "./ui";
+import { SectionHeading } from "./ui";
 
 export default function Statement() {
-  const ref = useReveal();
   return (
-    <section id="about" ref={ref} className="mx-auto max-w-6xl px-5 md:px-8 py-12 md:py-16 border-t rule" aria-label="About me">
+    <section id="about" className="mx-auto max-w-6xl px-5 md:px-8 py-12 md:py-16 border-t rule" aria-label="About me">
       <SectionHeading index="01" label="About" title="About Me" />
       <div className="max-w-2xl flex flex-col gap-4 text-[16px] text-[var(--body)] leading-relaxed">
         <p data-reveal>I am a Software Engineer at Maventic Innovation Pvt. Ltd.</p>
